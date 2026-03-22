@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>George C A | AI & ML Engineer</title>
+    <meta name="description" content="George C A – AI & Machine Learning enthusiast studying BSc AIML at Kristu Jayanti Deemed to Be University. Building intelligent systems that solve real-world problems.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- Fixed Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-content">
+            <a href="#hero" class="logo">GCA.</a>
+            <ul class="nav-links">
+                <li><a href="#about" id="nav-about">About</a></li>
+                <li><a href="#skills" id="nav-skills">Skills</a></li>
+                <li><a href="#projects" id="nav-projects">Projects</a></li>
+                <li><a href="#roadmap" id="nav-roadmap">Roadmap</a></li>
+                <li><a href="#contact" id="nav-contact">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="canvas-container">
+            <canvas id="hero-canvas"></canvas>
+            <div class="overlay-gradient"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-eyebrow reveal-text">BSc AIML · Kristu Jayanti College</p>
+            <h1 class="hero-title reveal-text delay-1">HI, I'M <span class="accent-text">GEORGE</span></h1>
+            <p class="hero-subtitle reveal-text delay-2">AI & Machine Learning Enthusiast building intelligent systems that solve real-world problems.</p>
+            <p class="hero-tagline reveal-text delay-3">Focused on deep learning, optimization, and scalable AI systems.</p>
+            <div class="hero-cta reveal-text delay-4">
+                <a href="#contact" class="btn-glow">Contact Me</a>
+                <a href="#projects" class="btn-outline">View Projects</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"><div class="wheel"></div></div>
+            <p>Scroll</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container fade-in">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I'm an aspiring AI engineer with a strong interest in how intelligent systems learn, adapt, and make decisions.</p>
+                    <p>I've built a solid foundation in machine learning concepts such as neural networks, backpropagation, and gradient descent—and I enjoy going beyond surface-level understanding into the mathematics behind them.</p>
+                    <p>Right now, I'm focused on translating theory into practice—working with tools like Python and soon PyTorch to build real, production-level systems.</p>
+                    <p>My long-term goal is to work on advanced AI systems and contribute to research in machine learning and intelligent systems.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">2+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">BSc</span>
+                        <span class="stat-label">AIML Undergraduate</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Curiosity</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Driven to Build</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+        <div class="container fade-in">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="skills-grid">
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🧠</div>
+                        <h3>Core Concepts</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Neural Networks</li>
+                        <li>Backpropagation</li>
+                        <li>Gradient Descent</li>
+                        <li>Model Evaluation</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">⚙️</div>
+                        <h3>Tools & Technologies</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>NumPy & Pandas</li>
+                        <li>Scikit-learn</li>
+                        <li><span class="learning-badge">Learning</span> PyTorch</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🔭</div>
+                        <h3>Areas of Interest</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Deep Learning</li>
+                        <li>Natural Language Processing</li>
+                        <li>Optimization Algorithms</li>
+                        <li>AI Systems Engineering</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+        <div class="container fade-in">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="project-tag">ML · Classification</div>
+                    <h3>Loan Approval Prediction System</h3>
+                    <p>Built a machine learning model to predict loan approval using Gradient Boosting. Explored feature importance and decision-making patterns to understand what drives approval decisions.</p>
+                    <ul class="project-details">
+                        <li>Dataset split: 80% training / 10% validation / 10% testing</li>
+                        <li>Focused on improving model accuracy and evaluation</li>
+                        <li>Explored feature importance and decision patterns</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>Scikit-learn</span>
+                        <span>Gradient Boosting</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-tag">ML · Research</div>
+                    <h3>ML Model Comparison Study</h3>
+                    <p>Implemented and compared multiple models including Logistic Regression, Random Forest, and Neural Networks—evaluating performance across different metrics to understand trade-offs.</p>
+                    <ul class="project-details">
+                        <li>Evaluated performance across different metrics</li>
+                        <li>Understood trade-offs between model architectures</li>
+                        <li>Focused on practical implementation insights</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>Scikit-learn</span>
+                        <span>Model Analysis</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Roadmap Section -->
+    <section id="roadmap" class="section roadmap-section">
+        <div class="container fade-in">
+            <h2 class="section-title">Learning Journey</h2>
+            <p class="roadmap-subtitle">I believe in structured growth. I focus on consistency over intensity—building skills step by step.</p>
+            <div class="roadmap-grid">
+                <div class="roadmap-item">
+                    <div class="roadmap-icon">🔥</div>
+                    <div class="roadmap-text">
+                        <h4>Mastering PyTorch</h4>
+                        <p>Deep learning framework for real-world model building</p>
+                        <span class="roadmap-status active">In Progress</span>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon">🤖</div>
+                    <div class="roadmap-text">
+                        <h4>Transformers & Modern Architectures</h4>
+                        <p>Understanding the mechanisms powering modern AI</p>
+                        <span class="roadmap-status upcoming">Upcoming</span>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon">🏗️</div>
+                    <div class="roadmap-text">
+                        <h4>End-to-End AI Systems</h4>
+                        <p>Building complete, scalable production-ready AI pipelines</p>
+                        <span class="roadmap-status upcoming">Upcoming</span>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon">🌍</div>
+                    <div class="roadmap-text">
+                        <h4>Open-Source Contribution</h4>
+                        <p>GSoC preparation and community-driven development</p>
+                        <span class="roadmap-status upcoming">Upcoming</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container fade-in">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="contact-subtitle">Interested in collaborating or have something interesting to discuss? Send me a message.</p>
+            <div class="form-container">
+                <form id="contact-form">
+                    <div class="input-group">
+                        <input type="text" id="name" name="name" required placeholder=" ">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" name="email" required placeholder=" ">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <div id="form-status" class="form-status"></div>
+                    <button type="submit" class="btn-glow submit-btn" id="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-name">George C A</p>
+            <p class="footer-sub">BSc AIML · Kristu Jayanti Deemed to Be University</p>
+            <p class="footer-copy">&copy; 2026 George C A. Crafted with intention.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

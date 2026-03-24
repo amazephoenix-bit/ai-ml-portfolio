@@ -821,7 +821,40 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ─── Neon Canvas Backgrounds (About/Skills/Projects) ──── */
+/* ─── Section Blend Transitions ──────────────────────── */
+.blend {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 250px;
+    z-index: 2;
+    pointer-events: none;
+}
+.blend-top  { top: 0; }
+.blend-bottom { bottom: 0; }
+
+/* 1. Hero (#050505) → About. Seam = #050505 */
+.about-top { background: linear-gradient(to bottom, #050505, transparent); }
+
+/* 2. About (#050510) → Skills. Seam = #050510 */
+.about-bottom { background: linear-gradient(to bottom, transparent, #050510); }
+.skills-top   { background: linear-gradient(to bottom, #050510, transparent); }
+
+/* 3. Skills (#030d0e) → Projects. Seam = #030d0e */
+.skills-bottom { background: linear-gradient(to bottom, transparent, #030d0e); }
+.projects-top  { background: linear-gradient(to bottom, #030d0e, transparent); }
+
+/* 4. Projects (#0a0506) → Roadmap. Seam = #0a0506 */
+.projects-bottom { background: linear-gradient(to bottom, transparent, #0a0506); }
+.roadmap-top     { background: linear-gradient(to bottom, #0a0506, transparent); }
+
+/* 5. Roadmap (#07030f) → Contact. Seam = #07030f */
+.roadmap-bottom { background: linear-gradient(to bottom, transparent, #07030f); }
+.contact-top    { background: linear-gradient(to bottom, #07030f, transparent); }
+
+
+
+
 .neon-canvas {
     position: absolute;
     inset: 0;

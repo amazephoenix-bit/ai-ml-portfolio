@@ -1048,89 +1048,30 @@ footer {
     box-shadow: 0 0 10px rgba(99,102,241,0.3);
 }
 
-/* ─── Section Animated Backgrounds (keep for Roadmap & Contact) ── */
+/* ─── Contact Section Static Background ── */
 .section {
     position: relative;
 }
-
-.section-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: steps(1);
-}
-
 .section .container {
     position: relative;
     z-index: 1;
 }
 
-/* ── Roadmap: frames 058–076 · Purple tint ── */
-.bg-roadmap { animation-name: frames-roadmap; }
-.bg-roadmap::after {
-    content: '';
+.bg-contact {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(40,10,60,0.82) 0%, rgba(5,5,5,0.70) 100%);
-    mix-blend-mode: multiply;
+    z-index: 0;
+    background-image: url('assets/contact-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-@keyframes frames-roadmap {
-    0%    { background-image: url('assets/frames/ezgif-frame-058.jpg'); }
-    5.3%  { background-image: url('assets/frames/ezgif-frame-059.jpg'); }
-    10.5% { background-image: url('assets/frames/ezgif-frame-060.jpg'); }
-    15.8% { background-image: url('assets/frames/ezgif-frame-061.jpg'); }
-    21.1% { background-image: url('assets/frames/ezgif-frame-062.jpg'); }
-    26.3% { background-image: url('assets/frames/ezgif-frame-063.jpg'); }
-    31.6% { background-image: url('assets/frames/ezgif-frame-064.jpg'); }
-    36.8% { background-image: url('assets/frames/ezgif-frame-065.jpg'); }
-    42.1% { background-image: url('assets/frames/ezgif-frame-066.jpg'); }
-    47.4% { background-image: url('assets/frames/ezgif-frame-067.jpg'); }
-    52.6% { background-image: url('assets/frames/ezgif-frame-068.jpg'); }
-    57.9% { background-image: url('assets/frames/ezgif-frame-069.jpg'); }
-    63.2% { background-image: url('assets/frames/ezgif-frame-070.jpg'); }
-    68.4% { background-image: url('assets/frames/ezgif-frame-071.jpg'); }
-    73.7% { background-image: url('assets/frames/ezgif-frame-072.jpg'); }
-    78.9% { background-image: url('assets/frames/ezgif-frame-073.jpg'); }
-    84.2% { background-image: url('assets/frames/ezgif-frame-074.jpg'); }
-    89.5% { background-image: url('assets/frames/ezgif-frame-075.jpg'); }
-    94.7% { background-image: url('assets/frames/ezgif-frame-076.jpg'); }
-}
-
-/* ── Contact: frames 077–096 · Rose tint ── */
-.bg-contact { animation-name: frames-contact; }
 .bg-contact::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(60,10,20,0.82) 0%, rgba(5,5,5,0.70) 100%);
+    background: linear-gradient(135deg, rgba(20,5,40,0.85) 0%, rgba(5,5,5,0.70) 100%);
     mix-blend-mode: multiply;
-}
-@keyframes frames-contact {
-    0%    { background-image: url('assets/frames/ezgif-frame-077.jpg'); }
-    5.3%  { background-image: url('assets/frames/ezgif-frame-078.jpg'); }
-    10.5% { background-image: url('assets/frames/ezgif-frame-079.jpg'); }
-    15.8% { background-image: url('assets/frames/ezgif-frame-080.jpg'); }
-    21.1% { background-image: url('assets/frames/ezgif-frame-081.jpg'); }
-    26.3% { background-image: url('assets/frames/ezgif-frame-082.jpg'); }
-    31.6% { background-image: url('assets/frames/ezgif-frame-083.jpg'); }
-    36.8% { background-image: url('assets/frames/ezgif-frame-084.jpg'); }
-    42.1% { background-image: url('assets/frames/ezgif-frame-085.jpg'); }
-    47.4% { background-image: url('assets/frames/ezgif-frame-086.jpg'); }
-    52.6% { background-image: url('assets/frames/ezgif-frame-087.jpg'); }
-    57.9% { background-image: url('assets/frames/ezgif-frame-088.jpg'); }
-    63.2% { background-image: url('assets/frames/ezgif-frame-089.jpg'); }
-    68.4% { background-image: url('assets/frames/ezgif-frame-090.jpg'); }
-    73.7% { background-image: url('assets/frames/ezgif-frame-091.jpg'); }
-    78.9% { background-image: url('assets/frames/ezgif-frame-092.jpg'); }
-    84.2% { background-image: url('assets/frames/ezgif-frame-093.jpg'); }
-    89.5% { background-image: url('assets/frames/ezgif-frame-094.jpg'); }
-    94.7% { background-image: url('assets/frames/ezgif-frame-095.jpg'); }
-    100%  { background-image: url('assets/frames/ezgif-frame-096.jpg'); }
 }
 
 /* ─── Neural Network Canvas (Roadmap) ─────── */

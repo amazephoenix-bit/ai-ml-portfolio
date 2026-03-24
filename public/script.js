@@ -129,17 +129,108 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(s => sectionObserver.observe(s));
 
 
-    // ─── SCROLL REVEAL ────────────────────────────────────────────
-    const fadeObserver = new IntersectionObserver((entries) => {
+    // ─── NEON PARTICLE CANVAS (About / Skills / Projects) ────────
+    function initNeonCanvas(canvasId, colors) {
+        const cv = document.getElementById(canvasId);
+        if (!cv) return;
+        const ctx = cv.getContext('2d');
+        const particles = [];
+        const count = 38;
+
+        function resize() {
+            cv.width  = cv.offsetWidth;
+            cv.height = cv.offsetHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x:   Math.random() * cv.width,
+                y:   Math.random() * cv.height,
+                r:   Math.random() * 2.4 + 0.6,
+                dx:  (Math.random() - 0.5) * 0.45,
+                dy:  (Math.random() - 0.5) * 0.45,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                alpha: Math.random() * 0.5 + 0.15,
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, cv.width, cv.height);
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = p.alpha;
+                ctx.shadowBlur = 18;
+                ctx.shadowColor = p.color;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+                ctx.shadowBlur = 0;
+                p.x += p.dx;
+                p.y += p.dy;
+                if (p.x < 0 || p.x > cv.width)  p.dx *= -1;
+                if (p.y < 0 || p.y > cv.height)  p.dy *= -1;
+            });
+
+            // Draw connecting lines between nearby particles
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = particles[i].color;
+                        ctx.globalAlpha = (1 - dist / 120) * 0.18;
+                        ctx.lineWidth = 0.6;
+                        ctx.stroke();
+                        ctx.globalAlpha = 1;
+                    }
+                }
+            }
+            requestAnimationFrame(draw);
+        }
+        draw();
+    }
+
+    initNeonCanvas('canvas-about',    ['#6366f1', '#8b5cf6', '#3b82f6', '#a5b4fc']);
+    initNeonCanvas('canvas-skills',   ['#06b6d4', '#10b981', '#6366f1', '#67e8f9']);
+    initNeonCanvas('canvas-projects', ['#fb7185', '#f97316', '#8b5cf6', '#fbbf24']);
+
+
+    // ─── 3D CARD TILT ON PROJECT CARDS ───────────────────────────
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const cx = rect.width  / 2;
+            const cy = rect.height / 2;
+            const rotX = ((y - cy) / cy) * -8;
+            const rotY = ((x - cx) / cx) *  8;
+            card.style.transform = `perspective(700px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+
+
+    // ─── SCROLL REVEAL (reveal + skill-card + roadmap-item) ───────
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                fadeObserver.unobserve(entry.target);
+                revealObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.12 });
 
-    document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+    document.querySelectorAll('.reveal, .skill-card, .roadmap-item').forEach(el => revealObserver.observe(el));
 
 
     // ─── CONTACT FORM ─────────────────────────────────────────────

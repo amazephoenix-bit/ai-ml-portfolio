@@ -821,6 +821,206 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* ─── Section Animated Backgrounds ────────── */
+.section {
+    position: relative; /* ensure stacking context */
+}
+
+.section-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Frame-flip speed: change seconds to slow/speed up */
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(1);
+}
+
+/* Push the container above the bg */
+.section .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── About: frames 001–019 · Indigo tint ── */
+.bg-about {
+    animation-name: frames-about;
+}
+.bg-about::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(20,10,60,0.82) 0%, rgba(5,5,5,0.70) 100%);
+    mix-blend-mode: multiply;
+}
+
+@keyframes frames-about {
+    0%    { background-image: url('assets/frames/ezgif-frame-001.jpg'); }
+    5.3%  { background-image: url('assets/frames/ezgif-frame-002.jpg'); }
+    10.5% { background-image: url('assets/frames/ezgif-frame-003.jpg'); }
+    15.8% { background-image: url('assets/frames/ezgif-frame-004.jpg'); }
+    21.1% { background-image: url('assets/frames/ezgif-frame-005.jpg'); }
+    26.3% { background-image: url('assets/frames/ezgif-frame-006.jpg'); }
+    31.6% { background-image: url('assets/frames/ezgif-frame-007.jpg'); }
+    36.8% { background-image: url('assets/frames/ezgif-frame-008.jpg'); }
+    42.1% { background-image: url('assets/frames/ezgif-frame-009.jpg'); }
+    47.4% { background-image: url('assets/frames/ezgif-frame-010.jpg'); }
+    52.6% { background-image: url('assets/frames/ezgif-frame-011.jpg'); }
+    57.9% { background-image: url('assets/frames/ezgif-frame-012.jpg'); }
+    63.2% { background-image: url('assets/frames/ezgif-frame-013.jpg'); }
+    68.4% { background-image: url('assets/frames/ezgif-frame-014.jpg'); }
+    73.7% { background-image: url('assets/frames/ezgif-frame-015.jpg'); }
+    78.9% { background-image: url('assets/frames/ezgif-frame-016.jpg'); }
+    84.2% { background-image: url('assets/frames/ezgif-frame-017.jpg'); }
+    89.5% { background-image: url('assets/frames/ezgif-frame-018.jpg'); }
+    94.7% { background-image: url('assets/frames/ezgif-frame-019.jpg'); }
+}
+
+/* ── Skills: frames 020–038 · Teal tint ── */
+.bg-skills {
+    animation-name: frames-skills;
+}
+.bg-skills::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(0,50,60,0.82) 0%, rgba(5,5,5,0.70) 100%);
+    mix-blend-mode: multiply;
+}
+
+@keyframes frames-skills {
+    0%    { background-image: url('assets/frames/ezgif-frame-020.jpg'); }
+    5.3%  { background-image: url('assets/frames/ezgif-frame-021.jpg'); }
+    10.5% { background-image: url('assets/frames/ezgif-frame-022.jpg'); }
+    15.8% { background-image: url('assets/frames/ezgif-frame-023.jpg'); }
+    21.1% { background-image: url('assets/frames/ezgif-frame-024.jpg'); }
+    26.3% { background-image: url('assets/frames/ezgif-frame-025.jpg'); }
+    31.6% { background-image: url('assets/frames/ezgif-frame-026.jpg'); }
+    36.8% { background-image: url('assets/frames/ezgif-frame-027.jpg'); }
+    42.1% { background-image: url('assets/frames/ezgif-frame-028.jpg'); }
+    47.4% { background-image: url('assets/frames/ezgif-frame-029.jpg'); }
+    52.6% { background-image: url('assets/frames/ezgif-frame-030.jpg'); }
+    57.9% { background-image: url('assets/frames/ezgif-frame-031.jpg'); }
+    63.2% { background-image: url('assets/frames/ezgif-frame-032.jpg'); }
+    68.4% { background-image: url('assets/frames/ezgif-frame-033.jpg'); }
+    73.7% { background-image: url('assets/frames/ezgif-frame-034.jpg'); }
+    78.9% { background-image: url('assets/frames/ezgif-frame-035.jpg'); }
+    84.2% { background-image: url('assets/frames/ezgif-frame-036.jpg'); }
+    89.5% { background-image: url('assets/frames/ezgif-frame-037.jpg'); }
+    94.7% { background-image: url('assets/frames/ezgif-frame-038.jpg'); }
+}
+
+/* ── Projects: frames 039–057 · Amber tint ── */
+.bg-projects {
+    animation-name: frames-projects;
+}
+.bg-projects::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(60,35,0,0.82) 0%, rgba(5,5,5,0.70) 100%);
+    mix-blend-mode: multiply;
+}
+
+@keyframes frames-projects {
+    0%    { background-image: url('assets/frames/ezgif-frame-039.jpg'); }
+    5.3%  { background-image: url('assets/frames/ezgif-frame-040.jpg'); }
+    10.5% { background-image: url('assets/frames/ezgif-frame-041.jpg'); }
+    15.8% { background-image: url('assets/frames/ezgif-frame-042.jpg'); }
+    21.1% { background-image: url('assets/frames/ezgif-frame-043.jpg'); }
+    26.3% { background-image: url('assets/frames/ezgif-frame-044.jpg'); }
+    31.6% { background-image: url('assets/frames/ezgif-frame-045.jpg'); }
+    36.8% { background-image: url('assets/frames/ezgif-frame-046.jpg'); }
+    42.1% { background-image: url('assets/frames/ezgif-frame-047.jpg'); }
+    47.4% { background-image: url('assets/frames/ezgif-frame-048.jpg'); }
+    52.6% { background-image: url('assets/frames/ezgif-frame-049.jpg'); }
+    57.9% { background-image: url('assets/frames/ezgif-frame-050.jpg'); }
+    63.2% { background-image: url('assets/frames/ezgif-frame-051.jpg'); }
+    68.4% { background-image: url('assets/frames/ezgif-frame-052.jpg'); }
+    73.7% { background-image: url('assets/frames/ezgif-frame-053.jpg'); }
+    78.9% { background-image: url('assets/frames/ezgif-frame-054.jpg'); }
+    84.2% { background-image: url('assets/frames/ezgif-frame-055.jpg'); }
+    89.5% { background-image: url('assets/frames/ezgif-frame-056.jpg'); }
+    94.7% { background-image: url('assets/frames/ezgif-frame-057.jpg'); }
+}
+
+/* ── Roadmap: frames 058–077 · Purple tint ── */
+.bg-roadmap {
+    animation-name: frames-roadmap;
+}
+.bg-roadmap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(40,10,60,0.82) 0%, rgba(5,5,5,0.70) 100%);
+    mix-blend-mode: multiply;
+}
+
+@keyframes frames-roadmap {
+    0%    { background-image: url('assets/frames/ezgif-frame-058.jpg'); }
+    5.3%  { background-image: url('assets/frames/ezgif-frame-059.jpg'); }
+    10.5% { background-image: url('assets/frames/ezgif-frame-060.jpg'); }
+    15.8% { background-image: url('assets/frames/ezgif-frame-061.jpg'); }
+    21.1% { background-image: url('assets/frames/ezgif-frame-062.jpg'); }
+    26.3% { background-image: url('assets/frames/ezgif-frame-063.jpg'); }
+    31.6% { background-image: url('assets/frames/ezgif-frame-064.jpg'); }
+    36.8% { background-image: url('assets/frames/ezgif-frame-065.jpg'); }
+    42.1% { background-image: url('assets/frames/ezgif-frame-066.jpg'); }
+    47.4% { background-image: url('assets/frames/ezgif-frame-067.jpg'); }
+    52.6% { background-image: url('assets/frames/ezgif-frame-068.jpg'); }
+    57.9% { background-image: url('assets/frames/ezgif-frame-069.jpg'); }
+    63.2% { background-image: url('assets/frames/ezgif-frame-070.jpg'); }
+    68.4% { background-image: url('assets/frames/ezgif-frame-071.jpg'); }
+    73.7% { background-image: url('assets/frames/ezgif-frame-072.jpg'); }
+    78.9% { background-image: url('assets/frames/ezgif-frame-073.jpg'); }
+    84.2% { background-image: url('assets/frames/ezgif-frame-074.jpg'); }
+    89.5% { background-image: url('assets/frames/ezgif-frame-075.jpg'); }
+    94.7% { background-image: url('assets/frames/ezgif-frame-076.jpg'); }
+}
+
+/* ── Contact: frames 077–096 · Rose tint ── */
+.bg-contact {
+    animation-name: frames-contact;
+}
+.bg-contact::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(60,10,20,0.82) 0%, rgba(5,5,5,0.70) 100%);
+    mix-blend-mode: multiply;
+}
+
+@keyframes frames-contact {
+    0%    { background-image: url('assets/frames/ezgif-frame-077.jpg'); }
+    5.3%  { background-image: url('assets/frames/ezgif-frame-078.jpg'); }
+    10.5% { background-image: url('assets/frames/ezgif-frame-079.jpg'); }
+    15.8% { background-image: url('assets/frames/ezgif-frame-080.jpg'); }
+    21.1% { background-image: url('assets/frames/ezgif-frame-081.jpg'); }
+    26.3% { background-image: url('assets/frames/ezgif-frame-082.jpg'); }
+    31.6% { background-image: url('assets/frames/ezgif-frame-083.jpg'); }
+    36.8% { background-image: url('assets/frames/ezgif-frame-084.jpg'); }
+    42.1% { background-image: url('assets/frames/ezgif-frame-085.jpg'); }
+    47.4% { background-image: url('assets/frames/ezgif-frame-086.jpg'); }
+    52.6% { background-image: url('assets/frames/ezgif-frame-087.jpg'); }
+    57.9% { background-image: url('assets/frames/ezgif-frame-088.jpg'); }
+    63.2% { background-image: url('assets/frames/ezgif-frame-089.jpg'); }
+    68.4% { background-image: url('assets/frames/ezgif-frame-090.jpg'); }
+    73.7% { background-image: url('assets/frames/ezgif-frame-091.jpg'); }
+    78.9% { background-image: url('assets/frames/ezgif-frame-092.jpg'); }
+    84.2% { background-image: url('assets/frames/ezgif-frame-093.jpg'); }
+    89.5% { background-image: url('assets/frames/ezgif-frame-094.jpg'); }
+    94.7% { background-image: url('assets/frames/ezgif-frame-095.jpg'); }
+    100%  { background-image: url('assets/frames/ezgif-frame-096.jpg'); }
+}
+
 /* ─── Responsive ──────────────────────────── */
 @media (max-width: 900px) {
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }

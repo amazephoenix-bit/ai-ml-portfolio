@@ -9,8 +9,11 @@ const PORT = process.env.PORT || 3000;
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+  .then(() => console.log('✅ MongoDB Connected'))
+  .catch(err => {
+    console.error('❌ MongoDB connection error:', err.message);
+    process.exit(1); // Exit so the error is visible and the server doesn't silently fail
+  });
 
 // Middleware
 app.use(cors());
@@ -21,6 +24,11 @@ app.use(express.static(path.join(__dirname, '../public')));
 const Contact = require('./models/Contact');
 
 app.post('/api/contact', async (req, res) => {
+    // 1 = connected
+    if (mongoose.connection.readyState !== 1) {
+        return res.status(503).json({ success: false, message: 'Database unavailable. Please try again shortly.' });
+    }
+
     try {
         const { name, email, message } = req.body;
         
@@ -33,8 +41,8 @@ app.post('/api/contact', async (req, res) => {
         await newContact.save();
         res.status(201).json({ success: true, message: 'Message sent successfully!' });
     } catch (error) {
-        console.error('Contact error:', error);
-        res.status(500).json({ success: false, message: 'Server error' });
+        console.error('Contact error:', error.message);
+        res.status(500).json({ success: false, message: 'Server error. Please try again later.' });
     }
 });
 

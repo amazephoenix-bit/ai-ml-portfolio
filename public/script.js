@@ -233,6 +233,177 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal, .skill-card, .roadmap-item').forEach(el => revealObserver.observe(el));
 
 
+    // ─── NEURAL NETWORK ANIMATION (Roadmap) ──────────────────────
+    (function initNeuralNet() {
+        const cv = document.getElementById('canvas-neural');
+        if (!cv) return;
+        const ctx = cv.getContext('2d');
+
+        function resize() {
+            cv.width  = cv.offsetWidth;
+            cv.height = cv.offsetHeight;
+            buildNetwork();
+        }
+
+        // Network architecture: [input, h1, h2, h3, output]
+        const LAYERS = [4, 5, 5, 4, 3];
+        const COLORS = {
+            node:   '#8b5cf6',
+            nodeLit:'#c4b5fd',
+            line:   'rgba(139,92,246,',
+            pulse:  '#f0abfc',
+            glow:   '#7c3aed',
+        };
+
+        let nodes = [];   // { x, y, lit, ring }
+        let edges = [];   // { a, b, w, pulses[] }
+
+        function buildNetwork() {
+            nodes = [];
+            edges = [];
+            const W = cv.width, H = cv.height;
+            const layerGap = W / (LAYERS.length + 1);
+
+            // Place nodes
+            LAYERS.forEach((count, li) => {
+                const x = layerGap * (li + 1);
+                const nodeGap = H / (count + 1);
+                for (let ni = 0; ni < count; ni++) {
+                    nodes.push({
+                        x, y: nodeGap * (ni + 1),
+                        lit: 0,   // 0–1 brightness
+                        ring: 0,  // pulse ring radius
+                        layer: li,
+                    });
+                }
+            });
+
+            // Build edges between adjacent layers
+            let offset = 0;
+            for (let li = 0; li < LAYERS.length - 1; li++) {
+                const aCount = LAYERS[li];
+                const bCount = LAYERS[li + 1];
+                const bOffset = offset + aCount;
+                for (let ai = 0; ai < aCount; ai++) {
+                    for (let bi = 0; bi < bCount; bi++) {
+                        edges.push({
+                            a: offset + ai,
+                            b: bOffset + bi,
+                            w: Math.random() * 0.6 + 0.15,  // weight → opacity
+                            pulses: [],  // { t } t=0..1 along edge
+                        });
+                    }
+                }
+                offset += aCount;
+            }
+        }
+
+        // Spawn a random signal pulse from a random node every ~900ms
+        let lastPulse = 0;
+        function spawnPulse(now) {
+            if (now - lastPulse < 900) return;
+            lastPulse = now;
+            // Pick a random edge
+            const e = edges[Math.floor(Math.random() * edges.length)];
+            e.pulses.push({ t: 0, speed: 0.008 + Math.random() * 0.006 });
+            // Light up source node
+            nodes[e.a].lit = 1;
+        }
+
+        function drawNode(n) {
+            const r = 7;
+            // Glow
+            const grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r * 3);
+            const brightness = 0.12 + n.lit * 0.55;
+            grd.addColorStop(0, `rgba(139,92,246,${brightness})`);
+            grd.addColorStop(1, 'rgba(139,92,246,0)');
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, r * 3, 0, Math.PI * 2);
+            ctx.fillStyle = grd;
+            ctx.fill();
+
+            // Node circle
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+            ctx.fillStyle = n.lit > 0.3 ? COLORS.nodeLit : COLORS.node;
+            ctx.shadowBlur = n.lit > 0.3 ? 20 : 6;
+            ctx.shadowColor = COLORS.glow;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+
+            // Pulse ring
+            if (n.ring > 0) {
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, r + n.ring * 18, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(196,181,253,${(1 - n.ring) * 0.7})`;
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+            }
+        }
+
+        function drawEdge(e) {
+            const A = nodes[e.a], B = nodes[e.b];
+            ctx.beginPath();
+            ctx.moveTo(A.x, A.y);
+            ctx.lineTo(B.x, B.y);
+            ctx.strokeStyle = COLORS.line + (e.w * 0.35) + ')';
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+
+            // Draw each pulse dot along the edge
+            e.pulses.forEach(p => {
+                const px = A.x + (B.x - A.x) * p.t;
+                const py = A.y + (B.y - A.y) * p.t;
+                ctx.beginPath();
+                ctx.arc(px, py, 3, 0, Math.PI * 2);
+                ctx.fillStyle = COLORS.pulse;
+                ctx.shadowBlur = 14;
+                ctx.shadowColor = COLORS.pulse;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            });
+        }
+
+        function update(now) {
+            edges.forEach(e => {
+                e.pulses = e.pulses.filter(p => {
+                    p.t += p.speed;
+                    if (p.t >= 1) {
+                        // Light up destination node
+                        nodes[e.b].lit = 1;
+                        nodes[e.b].ring = 0.01;
+                        return false;
+                    }
+                    return true;
+                });
+            });
+
+            // Decay node glow
+            nodes.forEach(n => {
+                n.lit  = Math.max(0, n.lit  - 0.018);
+                n.ring = Math.min(1, n.ring + 0.04);
+                if (n.ring >= 1) n.ring = 0;
+            });
+
+            spawnPulse(now);
+        }
+
+        function frame(now) {
+            ctx.clearRect(0, 0, cv.width, cv.height);
+            update(now);
+            edges.forEach(drawEdge);
+            nodes.forEach(drawNode);
+            requestAnimationFrame(frame);
+        }
+
+        resize();
+        window.addEventListener('resize', resize);
+        requestAnimationFrame(frame);
+    })();
+
+
+
+
     // ─── CONTACT FORM ─────────────────────────────────────────────
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');

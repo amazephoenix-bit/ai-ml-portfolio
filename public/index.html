@@ -239,23 +239,47 @@
         <div class="container reveal scale-in">
             <h2 class="section-title">Let's Connect</h2>
             <p class="contact-subtitle">Interested in collaborating or have something interesting to discuss? Send me a message.</p>
-            <div class="form-container">
-                <form id="contact-form">
-                    <div class="input-group">
-                        <input type="text" id="name" name="name" required placeholder=" ">
-                        <label for="name">Name</label>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="profile-photo-container">
+                        <img src="assets/profile.jpg" alt="George C A" class="profile-photo" onerror="this.src='https://via.placeholder.com/150/111111/FFFFFF/?text=GCA'">
                     </div>
-                    <div class="input-group">
-                        <input type="email" id="email" name="email" required placeholder=" ">
-                        <label for="email">Email</label>
+                    <h3 class="contact-name">George C A</h3>
+                    <div class="contact-details-list">
+                        <a href="mailto:georgeca0809@gmail.com" class="contact-detail-item">
+                            <span class="detail-icon">✉️</span>
+                            <span>georgeca0809@gmail.com</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/george-ca-236367381?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="contact-detail-item">
+                            <span class="detail-icon">💼</span>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="contact-detail-item">
+                            <span class="detail-icon">📸</span>
+                            <span>Instagram</span>
+                        </a>
                     </div>
-                    <div class="input-group">
-                        <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
-                        <label for="message">Message</label>
-                    </div>
-                    <div id="form-status" class="form-status"></div>
-                    <button type="submit" class="btn-glow submit-btn" id="submit-btn">Send Message</button>
-                </form>
+                </div>
+
+                <div class="form-container">
+                    <form id="contact-form">
+                        <div class="input-group">
+                            <input type="text" id="name" name="name" required placeholder=" ">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="email" name="email" required placeholder=" ">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="input-group">
+                            <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                        <div id="form-status" class="form-status"></div>
+                        <button type="submit" class="btn-glow submit-btn" id="submit-btn">Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
